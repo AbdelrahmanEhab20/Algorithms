@@ -11,7 +11,7 @@ const recursiveBinarySearchWithFirstList = (
 
   // Base case: if the range is invalid
   if (first > last) {
-    return `Target: ${target} not found in the list.`;
+    return `🟥🟥🟥---> Target: ${target} not found in the list.`;
   }
 
   // Calculate the midpoint
@@ -19,7 +19,7 @@ const recursiveBinarySearchWithFirstList = (
 
   if (list[midpoint] === target) {
     // Target found
-    return `Target: ${target} found at index: ${midpoint}`;
+    return `🟩🟩🟩---> Target: ${target} found at index: ${midpoint}`;
   } else if (list[midpoint] < target) {
     // Search the right half
     return recursiveBinarySearchWithFirstList(list, target, midpoint + 1, last);
@@ -35,9 +35,12 @@ const recursiveBinarySearchWithFirstList = (
 };
 
 const recursiveBinarySearchListLength = (list, target) => {
+  // Ensure the list is sorted for binary search
+  list.sort((a, b) => a - b);
+
   // Base case: if the list is empty
   if (list.length === 0) {
-    return `Target: ${target} not found in the list.`;
+    return `🟥🟥🟥---> Target: ${target} not found in the list.`;
   }
 
   // Calculate the midpoint
@@ -45,7 +48,7 @@ const recursiveBinarySearchListLength = (list, target) => {
 
   if (list[midpoint] === target) {
     // Target found
-    return `Target: ${target} found at index: ${midpoint}`;
+    return `🟩🟩🟩---> Target: ${target} found at index: ${midpoint}`;
   } else if (list[midpoint] < target) {
     // Search the right half
     return recursiveBinarySearchListLength(list.slice(midpoint + 1), target);
@@ -66,8 +69,8 @@ console.log(
 console.log("--------------------");
 // Test the function with multiple cases  ------ recursiveBinarySearchListLength 🟩 🟦
 console.log(
-  recursiveBinarySearchListLength([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 40)
+  recursiveBinarySearchListLength([1, 2, 3, 4, 10, 6, 7, 9, 8, 5], 40)
 ); // Found
 console.log(
-  recursiveBinarySearchListLength([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8)
+  recursiveBinarySearchListLength([1, 2, 3, 4, 10, 6, 7, 9, 8, 5], 8)
 ); // Not Found
